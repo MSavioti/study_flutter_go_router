@@ -28,6 +28,8 @@
  * THE SOFTWARE.
  */
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:study_flutter_go_router/infrastructure/router/routes.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -69,7 +71,7 @@ class _ProfileState extends State<Profile> {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               onTap: () {
-                // TODO: Add Personal Page Route
+                context.goNamed(Routes.personal);
               },
             ),
           ),
@@ -85,7 +87,7 @@ class _ProfileState extends State<Profile> {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               onTap: () {
-                // TODO: Add Payment Route
+                context.goNamed(Routes.payment);
               },
             ),
           ),
@@ -101,7 +103,7 @@ class _ProfileState extends State<Profile> {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               onTap: () {
-                // TODO: Add Signin Info Route
+                context.goNamed(Routes.signinInfo);
               },
             ),
           ),
@@ -117,7 +119,7 @@ class _ProfileState extends State<Profile> {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           onTap: () {
-            // TODO: Add More Info Route
+            context.goNamed(Routes.moreInfo);
           },
         ),
       ),
