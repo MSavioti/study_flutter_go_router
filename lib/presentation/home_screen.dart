@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         backgroundColor: Colors.lightBlue,
         title: const Text(
-          'Navigator',
+          'Shopping App',
           style: TextStyle(
               fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white),
         ),
@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: (index) {
           setState(() {
             _selectedIndex = index;
-        // TODO: Add Switch
+            // TODO: Add Switch
           });
         },
       ),
