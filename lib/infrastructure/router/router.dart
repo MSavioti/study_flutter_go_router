@@ -101,7 +101,61 @@ class AppRouter {
           ),
         ],
       ),
-      // TODO: Add Other routes
+      GoRoute(
+        path: '/shop',
+        redirect: (state) =>
+            state.namedLocation(Routes.home, params: {'tab': 'shop'}),
+      ),
+      GoRoute(
+        path: '/cart',
+        redirect: (state) =>
+            state.namedLocation(Routes.home, params: {'tab': 'cart'}),
+      ),
+      GoRoute(
+        path: '/profile',
+        redirect: (state) =>
+            state.namedLocation(Routes.home, params: {'tab': 'profile'}),
+      ),
+      GoRoute(
+        name: Routes.details,
+        path: '/details-redirector/:item',
+        redirect: (state) => state.namedLocation(
+          Routes.subDetails,
+          params: {'tab': 'shop', 'item': state.params['item']!},
+        ),
+      ),
+      GoRoute(
+        name: Routes.personal,
+        path: '/profile-personal',
+        redirect: (state) => state.namedLocation(
+          Routes.profilePersonal,
+          params: {'tab': 'profile'},
+        ),
+      ),
+      GoRoute(
+        name: Routes.payment,
+        path: '/profile-payment',
+        redirect: (state) => state.namedLocation(
+          Routes.profilePayment,
+          params: {'tab': 'profile'},
+        ),
+      ),
+      GoRoute(
+        name: Routes.signinInfo,
+        path: '/profile-signin-info',
+        redirect: (state) => state.namedLocation(
+          Routes.profileSigninInfo,
+          params: {'tab': 'profile'},
+        ),
+      ),
+      GoRoute(
+        name: Routes.moreInfo,
+        path: '/profile-more-info',
+        redirect: (state) => state.namedLocation(
+          Routes.profileMoreInfo,
+          params: {'tab': 'profile'},
+        ),
+      ),
     ],
     errorPageBuilder: (context, state) => MaterialPage<void>(
       key: state.pageKey,
