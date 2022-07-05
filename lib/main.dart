@@ -29,11 +29,10 @@
  */
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'cart_holder.dart';
 import 'package:provider/provider.dart';
-
-import 'login_state.dart';
-import 'presentation/login.dart';
+import 'package:study_flutter_go_router/cart_holder.dart';
+import 'package:study_flutter_go_router/login_state.dart';
+import 'package:study_flutter_go_router/infrastructure/router/router.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,19 +59,24 @@ class MyApp extends StatelessWidget {
           lazy: false,
           create: (BuildContext createContext) => loginState,
         ),
-        // TODO: Add Provider
+        Provider<AppRouter>(
+          lazy: false,
+          create: (_) => AppRouter(loginState: loginState),
+        ),
       ],
       child: Builder(
         builder: (BuildContext context) {
-          // TODO: Add Router
-          return MaterialApp(
+          final router = Provider.of<AppRouter>(context, listen: false).router;
+
+          return MaterialApp.router(
+            routeInformationProvider: router.routeInformationProvider,
+            routeInformationParser: router.routeInformationParser,
+            routerDelegate: router.routerDelegate,
             debugShowCheckedModeBanner: false,
-            title: 'Navigation App',
+            title: 'GoRouter demo',
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            // TODO: Remove
-            home: const Login(),
           );
         },
       ),
